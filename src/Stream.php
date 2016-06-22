@@ -6,6 +6,7 @@ use IteratorAggregate;
 use phpstreams\exception\InvalidStreamException;
 use phpstreams\operations\FilterOperation;
 use phpstreams\operations\MappingOperation;
+use phpstreams\operations\DistinctOperation;
 use Traversable;
 
 /**
@@ -77,5 +78,25 @@ class Stream implements IteratorAggregate
     public function map(callable $mapping)
     {
         return new MappingOperation($this, $mapping);
+    }
+
+    /**
+     * Enforce distinct values.
+     *
+     * This stream will yield every distinct value only once. Note that
+     * internally, it uses in_array for lookups. This is problematic for large
+     * numbers of distinct elements, as the complexity of this stream filter
+     * becomes O(n * m) with n the number of elements and m the number of distinct
+     * values.
+     *
+     * This mapping preserves key => value relationships, and will yield the
+     * values with the first keys encountered.
+     *
+     * @param type $strict whether to use strict comparisons for uniqueness.
+     * @return Stream
+     */
+    public function distinct($strict = false)
+    {
+        return new DistinctOperation($this->source, $strict);
     }
 }

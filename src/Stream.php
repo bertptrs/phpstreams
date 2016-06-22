@@ -4,9 +4,10 @@ namespace phpstreams;
 
 use IteratorAggregate;
 use phpstreams\exception\InvalidStreamException;
+use phpstreams\operations\DistinctOperation;
 use phpstreams\operations\FilterOperation;
 use phpstreams\operations\MappingOperation;
-use phpstreams\operations\DistinctOperation;
+use phpstreams\operations\SortedOperation;
 use Traversable;
 
 /**
@@ -97,6 +98,23 @@ class Stream implements IteratorAggregate
      */
     public function distinct($strict = false)
     {
-        return new DistinctOperation($this->source, $strict);
+        return new DistinctOperation($this, $strict);
+    }
+
+    /**
+     * Get a sorted view of the stream.
+     *
+     * This method yields its values sorted. Sort is done using the default asort()
+     * function, or uasort if a sorting function was given.
+     *
+     * Note that by the nature of sorting things, the entire previous source will be
+     * read into memory in order to sort it. This may be a performance issue.
+     *
+     * @param callable $sort [optional] a callback to use for sorting.
+     * @return Stream
+     */
+    public function sorted(callable $sort = null)
+    {
+        return new SortedOperation($this, $sort);
     }
 }

@@ -19,7 +19,8 @@
     },
     "autoload": {
         "psr-4": {
-            "phpstreams\\": "src/"
+            "phpstreams\\": "src/",
+            "phpstreams\\tests\\": "tests\\"
         }
     }
 }

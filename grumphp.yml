@@ -1,0 +1,7 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    tasks:
+        phpcsfixer:
+            config_file: .php_cs
+        phpunit: ~

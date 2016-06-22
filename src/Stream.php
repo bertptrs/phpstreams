@@ -6,7 +6,9 @@ use IteratorAggregate;
 use phpstreams\exception\InvalidStreamException;
 use phpstreams\operations\DistinctOperation;
 use phpstreams\operations\FilterOperation;
+use phpstreams\operations\LimitOperation;
 use phpstreams\operations\MappingOperation;
+use phpstreams\operations\SkipOperation;
 use phpstreams\operations\SortedOperation;
 use Traversable;
 
@@ -116,5 +118,33 @@ class Stream implements IteratorAggregate
     public function sorted(callable $sort = null)
     {
         return new SortedOperation($this, $sort);
+    }
+
+    /**
+     * Skip the first few elements.
+     *
+     * This method discards the first few elements from the stream, maintaining
+     * key => value relations.
+     *
+     * @param int $toSkip
+     * @return Stream
+     */
+    public function skip($toSkip)
+    {
+        return new SkipOperation($this, $toSkip);
+    }
+
+    /**
+     * Limit the stream to some number of elements.
+     *
+     * All elements after the limit are not considered or generated, so this can
+     * be used with infinite streams.
+     *
+     * @param int $limit The maximum number of elements to return.
+     * @return Stream
+     */
+    public function limit($limit)
+    {
+        return new LimitOperation($this, $limit);
     }
 }

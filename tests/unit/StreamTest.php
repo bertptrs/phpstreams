@@ -44,4 +44,37 @@ class StreamTest extends PHPUnit_Framework_TestCase
     {
         $value = new Stream("Geen source.");
     }
+
+    public function testAll()
+    {
+        $stream = new Stream([1, 4, 9, 16, 25]);
+
+        // All these integers are truthy.
+        $this->assertTrue($stream->all());
+
+        // Not all of them are even.
+        $this->assertFalse($stream->all(function ($value) {
+            return $value % 2 == 0;
+        }));
+
+        // All of these are squares.
+        $this->assertTrue($stream->all(function ($value) {
+            $root = round(sqrt($value));
+
+            return $root * $root == $value;
+        }));
+    }
+
+    public function testAny()
+    {
+        $this->assertTrue((new Stream([false, false, true, false]))->any());
+
+        $this->assertFalse((new Stream([false, false, false, false]))->any());
+
+        $stream = new Stream([1, 2, 3, 4, 42]);
+
+        $this->assertTrue($stream->any(function ($value) {
+            return $value == 42;
+        }));
+    }
 }

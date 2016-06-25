@@ -147,4 +147,52 @@ class Stream implements IteratorAggregate
     {
         return new LimitOperation($this, $limit);
     }
+
+    /**
+     * Return true if any element matches the predicate.
+     *
+     * This method short-circuits, so if any item matches the predicate, no
+     * further items are evaluated.
+     *
+     * @param callable $predicate
+     * @return boolean
+     */
+    public function any(callable $predicate = null)
+    {
+        if ($predicate === null) {
+            $predicate = Functions::identity();
+        }
+
+        foreach ($this as $value) {
+            if ($predicate($value)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Return true if all element matches the predicate.
+     *
+     * This method short-circuits, so if any item does not match the predicate,
+     * no further elements are considered.
+     *
+     * @param callable $predicate
+     * @return boolean
+     */
+    public function all(callable $predicate = null)
+    {
+        if ($predicate === null) {
+            $predicate = Functions::identity();
+        }
+
+        foreach ($this as $value) {
+            if (!$predicate($value)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

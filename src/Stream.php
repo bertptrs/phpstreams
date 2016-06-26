@@ -2,6 +2,7 @@
 
 namespace phpstreams;
 
+use Countable;
 use IteratorAggregate;
 use phpstreams\exception\InvalidStreamException;
 use phpstreams\operations\DistinctOperation;
@@ -17,7 +18,7 @@ use Traversable;
  *
  * @author Bert Peters <bert.ljpeters@gmail.com>
  */
-class Stream implements IteratorAggregate
+class Stream implements IteratorAggregate, Countable
 {
     /**
      * @var Traversable Backing source for this Stream.
@@ -194,5 +195,32 @@ class Stream implements IteratorAggregate
         }
 
         return true;
+    }
+
+    /**
+     * Convert this stream to an array.
+     *
+     * @param boolean $withKeys [optional] if false, return a simple array containing all values in order. If true (the default) preserve keys.
+     * @return array An (associative) array of the contents of the stream.
+     */
+    public function toArray($withKeys = true)
+    {
+        return iterator_to_array($this, $withKeys);
+    }
+
+    /**
+     * Count the number of elements in this stream.
+     *
+     * This method may consume the stream, if it is not repeatable. Use it only
+     * when appropriate.
+     *
+     * As this is simply an implementation of the Countable interface, the count
+     * function may be used instead. However, this still may consume the stream.
+     *
+     * @return int The number of elements in this Stream.
+     */
+    public function count()
+    {
+        return iterator_count($this);
     }
 }

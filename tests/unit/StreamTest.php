@@ -77,4 +77,31 @@ class StreamTest extends PHPUnit_Framework_TestCase
             return $value == 42;
         }));
     }
+
+    public function testCount()
+    {
+        $stream = new Stream([1, 2, 3, 4, 5, 6]);
+
+        $this->assertEquals(6, $stream->count());
+        $this->assertEquals(6, count($stream));
+
+        $filteredStream = $stream->filter(function ($value) {
+            return $value % 2 == 1;
+        });
+
+        $this->assertEquals(3, $filteredStream->count());
+    }
+
+    public function testToArray() {
+        $stream = new Stream([1, 2, 3, 4, 5, 6]);
+
+        $result = $stream->skip(4)->toArray();
+
+        $this->assertEquals([
+            4 => 5,
+            5 => 6
+        ], $result);
+
+        $this->assertEquals([5, 6], $stream->skip(4)->toArray(false));
+    }
 }

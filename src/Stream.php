@@ -27,7 +27,7 @@ class Stream implements IteratorAggregate, Countable
 
     /**
      * Construct a new stream from a traversable source.
-     * 
+     *
      * @param Traversable|array $source The source to create the stream from.
      * @throws InvalidStreamException if the given source is not usable as a stream.
      */
@@ -42,9 +42,9 @@ class Stream implements IteratorAggregate, Countable
 
     /**
      * Check whether a source is valid.
-     * 
+     *
      * Valid sources are either an array or a Traversable.
-     * 
+     *
      * @param mixed $source
      * @return boolean True if it is.
      */
@@ -222,5 +222,36 @@ class Stream implements IteratorAggregate, Countable
     public function count()
     {
         return iterator_count($this);
+    }
+
+    /**
+     * Reduce the stream using the given binary operation.
+     *
+     * The given is applied to every item in the stream in no particular order.
+     * The result is then returned.
+     *
+     * In order for the callable to be a proper reductor, it should be:
+     * <ul>
+     * <li>Commutative, so op($a, $b) is equal to op($b, $a), and
+     * <li>Should preserve respect the given identity, i.e. op($a, $identity) =
+     * $identity.
+     * </ul>
+     * If any of these properties do not hold, the output of this function is
+     * not defined.
+     *
+     * @param mixed $identity The identity element.
+     * @param callable $binaryOp A reduction function, respecting the properties
+     * above.
+     * @return mixed
+     */
+    public function reduce($identity, callable $binaryOp)
+    {
+        $cur = $identity;
+
+        foreach ($this as $value) {
+            $cur = $binaryOp($cur, $value);
+        }
+
+        return $cur;
     }
 }

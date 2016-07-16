@@ -104,4 +104,15 @@ class StreamTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals([5, 6], $stream->skip(4)->toArray(false));
     }
+
+    public function testReduce()
+    {
+        $instance = new Stream([1, 2, 3, 4]);
+
+        $result = $instance->reduce(0, function ($a, $b) {
+            return $a + $b;
+        });
+
+        $this->assertEquals(10, $result);
+    }
 }

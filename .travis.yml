@@ -8,4 +8,5 @@ php:
 install:
     - composer install
 
-script: phpunit
+script:
+    - vendor/bin/grumphp run

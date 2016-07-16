@@ -254,4 +254,13 @@ class Stream implements IteratorAggregate, Countable
 
         return $cur;
     }
+
+    public function collect(Collector $collector)
+    {
+        foreach ($this as $key => $value) {
+            $collector->add($key, $value);
+        }
+
+        return $collector->get();
+    }
 }

@@ -92,7 +92,8 @@ class StreamTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(3, $filteredStream->count());
     }
 
-    public function testToArray() {
+    public function testToArray()
+    {
         $stream = new Stream([1, 2, 3, 4, 5, 6]);
 
         $result = $stream->skip(4)->toArray();
@@ -114,5 +115,25 @@ class StreamTest extends PHPUnit_Framework_TestCase
         });
 
         $this->assertEquals(10, $result);
+    }
+
+    /**
+     * Test the collect method.
+     */
+    public function testCollect()
+    {
+        $instance = new Stream([1, 2, 3, 4]);
+
+        $collector = $this->getMockBuilder('phpstreams\Collector')
+            ->getMock();
+
+        $collector->expects($this->exactly(4))
+            ->method('add');
+
+        $collector->expects($this->once())
+            ->method('get')
+            ->willReturn(42);
+
+        $this->assertEquals(42, $instance->collect($collector));
     }
 }

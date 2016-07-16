@@ -24,4 +24,39 @@ class CollectorsTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(10, $instance->get());
     }
+
+    public function testJoining()
+    {
+        $instance = Collectors::joining();
+
+        $instance->add("a", "b");
+        $instance->add("foo", "bar");
+        $instance->add(1, 2);
+
+        $this->assertEquals("bbar2", $instance->get());
+    }
+
+    public function testJoiningWithDelimiter()
+    {
+        $instance = Collectors::joining(",");
+
+        $instance->add("a", "b");
+        $instance->add("foo", "bar");
+        $instance->add(1, 2);
+
+        $this->assertEquals("b,bar,2", $instance->get());
+    }
+
+    public function testReducing()
+    {
+        $instance = Collectors::reducing(1, function ($a, $b) {
+            return $a * $b;
+        });
+
+        $instance->add("foo", 2);
+        $instance->add("bar", 3);
+        $instance->add("baz", 4);
+
+        $this->assertEquals(24, $instance->get());
+    }
 }

@@ -3,6 +3,7 @@
 namespace phpstreams;
 
 use phpstreams\collectors\AveragingCollector;
+use phpstreams\collectors\ReducingCollector;
 
 /**
  * Utility class containing various collectors.
@@ -33,5 +34,40 @@ class Collectors
     public static function averaging()
     {
         return new AveragingCollector();
+    }
+
+    /**
+     * Get a collector that applies the given reduction to the stream.
+     *
+     * @param mixed $identity
+     * @param callable $reduction
+     * @return Collector
+     */
+    public function reducing($identity, callable $reduction)
+    {
+        return new ReducingCollector($identity, $reduction);
+    }
+
+    /**
+     * Get a collector that concatenates all the elements in the stream.
+     *
+     * @param string $delimiter [optional] A delimiter to insert between
+     * elements. Defaults to the empty string.
+     * @return Collector
+     */
+    public static function joining($delimiter = "")
+    {
+        $first = true;
+
+        return Collectors::reducing("",
+            function ($current, $element) use (&$first, $delimiter) {
+            if (!$first) {
+                $current .= $delimiter;
+            } else {
+                $first = false;
+            }
+
+            return $current . $element;
+        });
     }
 }

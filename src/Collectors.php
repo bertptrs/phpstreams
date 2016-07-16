@@ -43,7 +43,7 @@ class Collectors
      * @param callable $reduction
      * @return Collector
      */
-    public function reducing($identity, callable $reduction)
+    public static function reducing($identity, callable $reduction)
     {
         return new ReducingCollector($identity, $reduction);
     }

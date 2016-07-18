@@ -10,4 +10,5 @@ parameters:
                 - "die("
                 - "var_dump("
                 - "exit("
+                - "echo"
             triggered_by: [php]

@@ -283,4 +283,24 @@ class Stream implements IteratorAggregate, Countable
 
         return new FlatMapOperation($this, $unpacker);
     }
+
+    /**
+     * Check whether this stream is definitely sorted.
+     *
+     * This is used to optimize some stream operations, such as distinct(),
+     * which only needs constant memory when operating on a sorted list.
+     *
+     * Any stream operations that potentially change the sorting order should
+     * override this method to properly reflect the actual sorting order.
+     *
+     * @return boolean
+     */
+    public function isSorted()
+    {
+        if ($this->source instanceof Stream) {
+            return $this->source->isSorted();
+        } else {
+            return false;
+        }
+    }
 }

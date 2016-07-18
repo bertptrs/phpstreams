@@ -43,4 +43,17 @@ class FlatMapOperation extends Stream
             }
         }
     }
+
+    /**
+     * Override the parent sorting method.
+     *
+     * Flatmapping does not neccesarily preserve sorting order, so this method
+     * always returns false.
+     *
+     * @return boolean
+     */
+    public function isSorted()
+    {
+        return false;
+    }
 }

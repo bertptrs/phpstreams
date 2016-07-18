@@ -19,4 +19,17 @@ class MappingOperation extends AbstractCallbackOperation
             yield $key => $callback($value);
         }
     }
+
+    /**
+     * Override the parent sorting method.
+     *
+     * Mapping does not neccesarily preserve sorting order, so this method
+     * always returns false.
+     *
+     * @return boolean
+     */
+    public function isSorted()
+    {
+        return false;
+    }
 }

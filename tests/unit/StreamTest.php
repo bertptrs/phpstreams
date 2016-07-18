@@ -3,8 +3,10 @@
 namespace phpstreams\tests\unit;
 
 use DirectoryIterator;
+use phpstreams\exception\InvalidStreamException;
 use phpstreams\Stream;
 use PHPUnit_Framework_TestCase;
+use ReflectionClass;
 
 /**
  * Test cases for the Stream class.
@@ -38,7 +40,7 @@ class StreamTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \phpstreams\exception\InvalidStreamException
+     * @expectedException phpstreams\exception\InvalidStreamException
      */
     public function testConstructorException()
     {
@@ -135,5 +137,42 @@ class StreamTest extends PHPUnit_Framework_TestCase
             ->willReturn(42);
 
         $this->assertEquals(42, $instance->collect($collector));
+    }
+
+    public function testIsSortedWithSortedSource()
+    {
+        $sortedSource = $this->getMockBuilder('phpstreams\Stream')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $sortedSource->expects($this->once())
+            ->method('isSorted')
+            ->willReturn(true);
+
+        $instance = new Stream($sortedSource);
+
+        $this->assertTrue($instance->isSorted());
+    }
+
+    public function testIsSortedWithUnsortedSource()
+    {
+        $unsortedSource = $this->getMockBuilder('phpstreams\Stream')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $unsortedSource->expects($this->once())
+            ->method('isSorted')
+            ->willReturn(false);
+
+        $instance = new Stream($unsortedSource);
+
+        $this->assertFalse($instance->isSorted());
+    }
+
+    public function testIsSortedWithArray()
+    {
+        $instance = new Stream([]);
+
+        $this->assertFalse($instance->isSorted());
     }
 }

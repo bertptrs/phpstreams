@@ -51,4 +51,9 @@ class SortedOperation extends Stream
 
         return new ArrayIterator($data);
     }
+
+    public function isSorted()
+    {
+        return true;
+    }
 }

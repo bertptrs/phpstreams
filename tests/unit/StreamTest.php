@@ -3,10 +3,8 @@
 namespace phpstreams\tests\unit;
 
 use DirectoryIterator;
-use phpstreams\exception\InvalidStreamException;
 use phpstreams\Stream;
 use PHPUnit_Framework_TestCase;
-use ReflectionClass;
 
 /**
  * Test cases for the Stream class.

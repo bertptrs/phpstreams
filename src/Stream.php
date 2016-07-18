@@ -7,6 +7,7 @@ use IteratorAggregate;
 use phpstreams\exception\InvalidStreamException;
 use phpstreams\operations\DistinctOperation;
 use phpstreams\operations\FilterOperation;
+use phpstreams\operations\FlatMapOperation;
 use phpstreams\operations\LimitOperation;
 use phpstreams\operations\MappingOperation;
 use phpstreams\operations\SkipOperation;
@@ -262,5 +263,24 @@ class Stream implements IteratorAggregate, Countable
         }
 
         return $collector->get();
+    }
+
+    /**
+     * Flatten the underlying stream.
+     *
+     * This method takes each element and unpacks it into a sequence of elements.
+     * All individual sequences are concatenated in the resulting stream.
+     *
+     * @param callable $unpacker [optional] An unpacker function that can unpack
+     * elements into something iterable. Default is to use the identity function.
+     * @return Stream
+     */
+    public function flatMap(callable $unpacker = null)
+    {
+        if ($unpacker == null) {
+            $unpacker = Functions::identity();
+        }
+
+        return new FlatMapOperation($this, $unpacker);
     }
 }

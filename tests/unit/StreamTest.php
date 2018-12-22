@@ -36,6 +36,13 @@ class StreamTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf("Traversable", $value);
     }
 
+    public function testStaticCreation()
+    {
+        $value = Stream::of([]);
+
+        $this->assertInstanceOf("Traversable", $value);
+    }
+
     /**
      * @test
      * @expectedException phpstreams\exception\InvalidStreamException

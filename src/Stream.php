@@ -42,6 +42,17 @@ class Stream implements IteratorAggregate, Countable
     }
 
     /**
+     * Create a new stream from a traversable source.
+     *
+     * @param Traversable|array $source The source to create the stream from.
+     * @throws InvalidStreamException if the given source is not usable as a stream.
+     */
+    public static function of($source)
+    {
+        return new static($source);
+    }
+
+    /**
      * Check whether a source is valid.
      *
      * Valid sources are either an array or a Traversable.

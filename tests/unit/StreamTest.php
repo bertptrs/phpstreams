@@ -144,6 +144,30 @@ class StreamTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(42, $instance->collect($collector));
     }
 
+    public function testFirst()
+    {
+        $stream = new Stream([4, 5, 6, 7]);
+        $emptyStream = new Stream([]);
+
+        $this->assertEquals(4, $stream->first());
+
+        $this->assertEquals(null, $emptyStream->first());
+
+        $this->assertEquals('empty', $emptyStream->first('empty'));
+
+        $result = $stream->filter(function ($a) {
+            return $a > 10;
+        })->first();
+
+        $this->assertEquals(null, $result);
+
+        $result = $stream->filter(function ($a) {
+            return $a > 5;
+        })->first();
+
+        $this->assertEquals(6, $result);
+    }
+
     public function testIsSortedWithSortedSource()
     {
         $sortedSource = $this->getMockBuilder('phpstreams\Stream')

@@ -277,6 +277,21 @@ class Stream implements IteratorAggregate, Countable
     }
 
     /**
+     * Get first element from stream
+     *
+     * @param $defaultValue [optional] Default value to return if stream is empty
+     * @return first element if available, default value otherwise
+     */
+    public function first($defaultValue = null)
+    {
+        foreach ($this as $value) {
+            return $value;
+        }
+
+        return $defaultValue;
+    }
+
+    /**
      * Flatten the underlying stream.
      *
      * This method takes each element and unpacks it into a sequence of elements.

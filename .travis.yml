@@ -1,11 +1,16 @@
 language: php
 
+cache:
+    directories:
+        - .composer/cache
+
 env:
     global:
         # Needed because of PHP 7.3
         - PHP_CS_FIXER_IGNORE_ENV=1
 
 matrix:
+    fast_finish: true
     include:
         - php: 7.0
         - php: 7.1

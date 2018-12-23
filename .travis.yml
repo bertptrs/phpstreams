@@ -1,12 +1,28 @@
 language: php
 
-php:
-    - 5.5.9
-    - 5.6
-    - 7.0
+env:
+    global:
+        # Needed because of PHP 7.3
+        - PHP_CS_FIXER_IGNORE_ENV=1
+
+matrix:
+    include:
+        - php: 7.0
+        - php: 7.1
+        - php: 7.2
+        - php: 7.3
+          env: COMPOSERFLAGS=""
+        - php: 7.3
+          env: COMPOSERFLAGS="--ignore-platform-reqs"
+        - php: nightly
+
+    allow_failures:
+        - php: nightly
+        - php: 7.3
+          env: COMPOSERFLAGS=""
 
 install:
-    - composer install
+    - composer install $COMPOSERFLAGS
 
 script:
     - vendor/bin/grumphp run

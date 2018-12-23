@@ -2,7 +2,7 @@ language: php
 
 cache:
     directories:
-        - .composer/cache
+        - ~/.cache/composer
 
 env:
     global:

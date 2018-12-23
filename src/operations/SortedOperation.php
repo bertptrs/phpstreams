@@ -16,7 +16,7 @@ use Traversable;
  * Note that by the nature of sorting things, the entire previous source will be
  * read into memory in order to sort it. This may be a performance issue.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class SortedOperation extends Stream
 {

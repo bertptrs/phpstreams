@@ -3,14 +3,14 @@
 namespace phpstreams\tests\unit;
 
 use phpstreams\Functions;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for the Functions class utility.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class FunctionsTest extends PHPUnit_Framework_TestCase
+class FunctionsTest extends TestCase
 {
 
     /**

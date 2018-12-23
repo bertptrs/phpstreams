@@ -4,14 +4,14 @@ namespace phpstreams\tests\unit;
 
 use DirectoryIterator;
 use phpstreams\Stream;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for the Stream class.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class StreamTest extends PHPUnit_Framework_TestCase
+class StreamTest extends TestCase
 {
 
     /**
@@ -19,14 +19,20 @@ class StreamTest extends PHPUnit_Framework_TestCase
      */
     public function testIsValidSource()
     {
-        $this->assertTrue(Stream::isValidSource([]),
-            'Arrays should be valid sources.');
+        $this->assertTrue(
+            Stream::isValidSource([]),
+            'Arrays should be valid sources.'
+        );
 
-        $this->assertTrue(Stream::isValidSource(new DirectoryIterator(__DIR__)),
-            'Iterators should be valid sources.');
+        $this->assertTrue(
+            Stream::isValidSource(new DirectoryIterator(__DIR__)),
+            'Iterators should be valid sources.'
+        );
 
-        $this->assertFalse(Stream::isValidSource("Not a stream"),
-            "Strings should be invalid sources.");
+        $this->assertFalse(
+            Stream::isValidSource("Not a stream"),
+            "Strings should be invalid sources."
+        );
     }
 
     public function testConstructor()

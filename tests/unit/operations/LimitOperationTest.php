@@ -4,14 +4,14 @@ namespace phpstream\tests\unit\operations;
 
 use InvalidArgumentException;
 use phpstreams\operations\LimitOperation;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for the limit stream operation.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class LimitOperationTest extends PHPUnit_Framework_TestCase
+class LimitOperationTest extends TestCase
 {
     public function testLimit()
     {

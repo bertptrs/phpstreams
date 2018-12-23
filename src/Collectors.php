@@ -12,7 +12,7 @@ use phpstreams\collectors\ReducingCollector;
  * rather than anonymous classes. This is an implementation detail, and should
  * not be relied upon. The implementing classes may be removed at any point.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class Collectors
 {
@@ -59,15 +59,17 @@ class Collectors
     {
         $first = true;
 
-        return Collectors::reducing("",
+        return Collectors::reducing(
+            "",
             function ($current, $element) use (&$first, $delimiter) {
-            if (!$first) {
-                $current .= $delimiter;
-            } else {
-                $first = false;
-            }
+                if (!$first) {
+                    $current .= $delimiter;
+                } else {
+                    $first = false;
+                }
 
-            return $current . $element;
-        });
+                return $current . $element;
+            }
+        );
     }
 }

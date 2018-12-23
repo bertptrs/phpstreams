@@ -3,16 +3,15 @@
 namespace phpstream\tests\unit\operations;
 
 use phpstreams\operations\MappingOperation;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for the mapping operation.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class MappingOperationTest extends PHPUnit_Framework_TestCase
+class MappingOperationTest extends TestCase
 {
-
     public function testMapping()
     {
         $mapping = new MappingOperation([1, 2, 3, 4, 5], function ($value) {

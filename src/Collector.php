@@ -10,7 +10,7 @@ namespace phpstreams;
  *
  * Finally, the result is queried in the get method.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 interface Collector
 {

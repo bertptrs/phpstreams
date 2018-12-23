@@ -9,7 +9,7 @@ use Traversable;
 /**
  * A stream operation that skips the first few items.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class SkipOperation extends Stream
 {

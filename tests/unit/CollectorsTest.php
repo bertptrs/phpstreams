@@ -3,16 +3,15 @@
 namespace phpstreams\tests\unit;
 
 use phpstreams\Collectors;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for the various collectors.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class CollectorsTest extends PHPUnit_Framework_TestCase
+class CollectorsTest extends TestCase
 {
-
     public function testAveraging()
     {
         $instance = Collectors::averaging();

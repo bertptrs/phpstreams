@@ -3,14 +3,14 @@
 namespace phpstream\tests\unit\operations;
 
 use phpstreams\operations\FlatMapOperation;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for the FlatMapOperation.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class FlatMapOperationTest extends PHPUnit_Framework_TestCase
+class FlatMapOperationTest extends TestCase
 {
     public function testFlatMap()
     {

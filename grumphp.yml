@@ -2,8 +2,10 @@ parameters:
     git_dir: .
     bin_dir: vendor/bin
     tasks:
-        phpcsfixer:
-            config_file: .php_cs
+        composer:
+            strict: true
+        phpcsfixer2:
+            config: .php_cs
         phpunit: ~
         git_blacklist:
             keywords:

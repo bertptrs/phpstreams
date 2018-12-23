@@ -7,7 +7,7 @@ namespace phpstreams\operations;
  *
  * This stream uses a callback to map values from a stream to a function.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class MappingOperation extends AbstractCallbackOperation
 {

@@ -7,7 +7,7 @@ use phpstreams\Stream;
 /**
  * Base class to implement callback based operations on the stream.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class AbstractCallbackOperation extends Stream
 {

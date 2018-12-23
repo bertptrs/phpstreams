@@ -17,7 +17,7 @@ use Traversable;
 /**
  * Base stream class.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class Stream implements IteratorAggregate, Countable
 {

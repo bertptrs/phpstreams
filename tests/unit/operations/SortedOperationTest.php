@@ -4,14 +4,14 @@ namespace phpstream\tests\unit\operations;
 
 use ArrayIterator;
 use phpstreams\operations\SortedOperation;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for the SortedOperation.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class SortedOperationTest extends PHPUnit_Framework_TestCase
+class SortedOperationTest extends TestCase
 {
     public function testSorted()
     {

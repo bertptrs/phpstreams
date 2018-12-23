@@ -12,7 +12,7 @@ use phpstreams\Collectors;
  *
  * @see Collectors
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class AveragingCollector implements Collector
 {

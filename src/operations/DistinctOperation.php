@@ -9,7 +9,7 @@ use phpstreams\Stream;
  *
  * A stream that will only yield each distinct value once.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class DistinctOperation extends Stream
 {

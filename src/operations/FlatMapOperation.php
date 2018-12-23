@@ -10,7 +10,7 @@ use phpstreams\Stream;
  * This method does not preserve key => value relationships, as this would not
  * make sense with nested arrays. Instead, it produces sequential keys.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class FlatMapOperation extends Stream
 {

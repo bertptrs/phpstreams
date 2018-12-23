@@ -5,22 +5,25 @@
     "authors": [
         {
             "name": "Bert Peters",
-            "email": "bert.ljpeters@gmail.com"
+            "email": "bert@bertptrs.nl"
         }
     ],
     "require": {
-        "php": ">=5.5.9"
+        "php": "^7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=4.8",
-        "phpro/grumphp": "^0.9.1",
-        "friendsofphp/php-cs-fixer": "^1.11",
-        "squizlabs/php_codesniffer": "^2.6"
+        "phpunit/phpunit": "^6.0",
+        "phpro/grumphp": "^0.14.3",
+        "friendsofphp/php-cs-fixer": "^2.13"
     },
     "autoload": {
         "psr-4": {
-            "phpstreams\\": "src/",
-            "phpstreams\\tests\\": "tests\\"
+            "phpstreams\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "phpstreams\\tests\\": "tests"
         }
     }
 }

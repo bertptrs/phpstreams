@@ -5,7 +5,7 @@ namespace phpstreams;
 /**
  * A collection of utilities related to functions.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 abstract class Functions
 {

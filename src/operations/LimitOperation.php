@@ -8,7 +8,7 @@ use phpstreams\Stream;
 /**
  * A stream operation limiting its output to some number of elements.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class LimitOperation extends Stream
 {

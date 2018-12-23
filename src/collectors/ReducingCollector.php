@@ -7,7 +7,7 @@ use phpstreams\Collector;
 /**
  * Collector that applies a reductor, as if by the reduce method.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class ReducingCollector implements Collector
 {

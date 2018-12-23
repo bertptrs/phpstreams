@@ -8,7 +8,7 @@ namespace phpstreams\operations;
  * This stream takes a callback and yields every entry for which the callback
  * returns something truthy.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
 class FilterOperation extends AbstractCallbackOperation
 {

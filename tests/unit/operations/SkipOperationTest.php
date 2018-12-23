@@ -4,14 +4,14 @@ namespace phpstream\tests\unit\operations;
 
 use InvalidArgumentException;
 use phpstreams\operations\SkipOperation;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for the skip operation.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class SkipOperationTest extends PHPUnit_Framework_TestCase
+class SkipOperationTest extends TestCase
 {
     public function testSkip()
     {

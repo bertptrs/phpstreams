@@ -3,16 +3,16 @@
 namespace phpstream\tests\unit\operations;
 
 use phpstreams\operations\DistinctOperation;
+use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_TestCase;
 
 /**
  * Test cases for the DistinctOperation class.
  *
- * @author Bert Peters <bert.ljpeters@gmail.com>
+ * @author Bert Peters <bert@bertptrs.nl>
  */
-class DistinctOperationTest extends PHPUnit_Framework_TestCase
+class DistinctOperationTest extends TestCase
 {
-
     public function testDistinct()
     {
         $data = [1, 4, 2, 3, '1', 3];

@@ -4,6 +4,7 @@ namespace phpstreams;
 
 use phpstreams\collectors\AveragingCollector;
 use phpstreams\collectors\ReducingCollector;
+use phpstreams\collectors\MappingCollector;
 
 /**
  * Utility class containing various collectors.
@@ -69,5 +70,17 @@ class Collectors
 
             return $current . $element;
         });
+    }
+
+    /**
+     * Get a collector that maps keys and values.
+     *
+     * @param callable $keyMapper
+     * @param callable $valueMapper [optional] A value mapper. Defaults to pass-through mapper.
+     * @return Collector
+     */
+    public static function mapping(callable $keyMapper, callable $valueMapper = null)
+    {
+        return new MappingCollector($keyMapper, $valueMapper);
     }
 }

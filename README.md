@@ -47,7 +47,7 @@ $isOdd = function($num) {
 };
 
 // Create our stream.
-$stream = new phpstreams\Stream(fibonacci());
+$stream = new phpstreams\Stream(fibonacci()); // or phpstreams\Stream::of(fibonacci());
 
 // Finally, use these to create our result.
 $oddFibo = $stream->filter($isOdd)  // Keep only the odd numbers

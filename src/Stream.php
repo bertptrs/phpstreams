@@ -42,6 +42,17 @@ class Stream implements IteratorAggregate, Countable
     }
 
     /**
+     * Create a new stream from a traversable source.
+     *
+     * @param Traversable|array $source The source to create the stream from.
+     * @throws InvalidStreamException if the given source is not usable as a stream.
+     */
+    public static function of($source)
+    {
+        return new static($source);
+    }
+
+    /**
      * Check whether a source is valid.
      *
      * Valid sources are either an array or a Traversable.
@@ -263,6 +274,21 @@ class Stream implements IteratorAggregate, Countable
         }
 
         return $collector->get();
+    }
+
+    /**
+     * Get first element from stream
+     *
+     * @param $defaultValue [optional] Default value to return if stream is empty
+     * @return first element if available, default value otherwise
+     */
+    public function first($defaultValue = null)
+    {
+        foreach ($this as $value) {
+            return $value;
+        }
+
+        return $defaultValue;
     }
 
     /**

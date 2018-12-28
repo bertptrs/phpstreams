@@ -58,4 +58,38 @@ class CollectorsTest extends TestCase
 
         $this->assertEquals(24, $instance->get());
     }
+
+    public function testMapping()
+    {
+        $instance = Collectors::mapping(function ($k, $v) {
+            return $k . "a";
+        }, function($k, $v) {
+            return $v + 10;
+        });
+
+        $instance->add("a", 2);
+        $instance->add("b", 3);
+        $instance->add("c", 4);
+
+        $this->assertEquals([
+            "aa" => 12,
+            "ba" => 13,
+            "ca" => 14
+        ], $instance->get());
+
+
+        $instance = Collectors::mapping(function ($k, $v) {
+            return $k . "a";
+        });
+
+        $instance->add("a", 2);
+        $instance->add("b", 3);
+        $instance->add("c", 4);
+
+        $this->assertEquals([
+            "aa" => 2,
+            "ba" => 3,
+            "ca" => 4
+        ], $instance->get());
+    }
 }
